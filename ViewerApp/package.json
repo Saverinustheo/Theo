@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "calculatorlib": "file:../CalculatorLib",
+    "filereaderlib": "file:../FileReaderLib"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
