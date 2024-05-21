@@ -1,10 +1,10 @@
-// src/filereader.js
-const fs = require('fs');
+// src/FileReaderLib.js
+const fs = require('fs').promises;
 
 class FileReader {
-    readFile(filePath) {
-        return fs.promises.readFile(filePath, 'utf-8');
-    }
+  async readFile(filePath) {
+    return await fs.readFile(filePath, 'utf8');
+  }
 }
 
 module.exports = FileReader;
