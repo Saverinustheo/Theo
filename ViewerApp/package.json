@@ -5,5 +5,18 @@
   },
   "scripts": {
     "test": "jest"
-  }
+  },
+  "name": "viewerapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

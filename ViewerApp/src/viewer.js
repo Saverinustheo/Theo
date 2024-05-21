@@ -1,6 +1,6 @@
 // src/viewer.js
-const Calculator = require('CalculatorLib');
-const FileReader = require('FileReaderLib');
+const Calculator = require('calculator');
+const FileReader = require('filereader');
 
 class Viewer {
     constructor() {
