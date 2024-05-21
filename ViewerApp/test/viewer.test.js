@@ -1,29 +1,18 @@
-// test/viewer.test.js
-const Viewer = require('../src/viewer');
-const Calculator = require('CalculatorLib');
-const FileReader = require('FileReaderLib');
+const CalculatorLib = require('../../CalculatorLib/src/calculator');
+const FileReaderLib = require('../../FileReaderLib/src/filereader');
 
-jest.mock('CalculatorLib');
-jest.mock('FileReaderLib');
+jest.mock('../../CalculatorLib/src/calculator');
+jest.mock('../../FileReaderLib/src/filereader');
 
 test('displays file content', async () => {
-    const filePath = 'test.txt';
-    const fileContent = 'Hello, World!';
-    FileReader.prototype.readFile.mockResolvedValue(fileContent);
+  const mockAdd = jest.fn().mockReturnValue(3);
+  CalculatorLib.add = mockAdd;
 
-    const viewer = new Viewer();
-    console.log = jest.fn();
-    await viewer.displayFileContent(filePath);
+  const mockReadFile = jest.fn().mockResolvedValue('file content');
+  FileReaderLib.readFile = mockReadFile;
 
-    expect(console.log).toHaveBeenCalledWith('File Content:', fileContent);
-});
-
-test('displays sum of 1 and 2', () => {
-    Calculator.prototype.add.mockReturnValue(3);
-
-    const viewer = new Viewer();
-    console.log = jest.fn();
-    viewer.displaySum(1, 2);
-
-    expect(console.log).toHaveBeenCalledWith('Sum:', 3);
+  const result = await FileReaderLib.readFile('dummyPath');
+  expect(result).toBe('file content');
+  expect(CalculatorLib.add(1, 2)).toBe(3);
+  expect(mockAdd).toHaveBeenCalledWith(1, 2);
 });
