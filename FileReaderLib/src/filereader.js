@@ -1,4 +1,4 @@
-// src/FileReaderLib.js
+// src/filereader.js
 const fs = require('fs').promises;
 
 class FileReader {
